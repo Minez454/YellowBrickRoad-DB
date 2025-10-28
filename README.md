@@ -31,3 +31,19 @@ CREATE TABLE Services (
     description VARCHAR(1000),
     contact_person VARCHAR(100)
 );
+
+---
+
+## 4. Apprentice Jobs Table
+This table stores the apprentice job opportunities.
+
+**SQL Code:**
+```sql
+CREATE TABLE ApprenticeJobs (
+    job_id NUMBER PRIMARY KEY,
+    job_title VARCHAR(100) NOT NULL,
+    description VARCHAR(1000),
+    company_name VARCHAR(100),
+    contact_person VARCHAR(100),
+    contact_phone VARCHAR(20)
+);
