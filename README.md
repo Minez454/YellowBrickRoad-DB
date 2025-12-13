@@ -1,49 +1,41 @@
-# YellowBrickRoad Database Design
+# 🧱 Yellow Brick Road: The Survival System
 
-This project contains the database schema for the YellowBrickRoad app, designed to connect homeless individuals with real-time resources.
+> **"Not just an app. A survival infrastructure."**
 
-## 1. User Table
-This table stores information for the app's users.
+Yellow Brick Road is a survivor-led technology platform designed to end homelessness through total systems integration. It replaces bureaucratic friction with **emotional scaffolding**, guided by **Brick**, a trauma-informed AI companion.
 
-**SQL Code:**
-```sql
-CREATE TABLE Users (
-    user_id NUMBER PRIMARY KEY,
-    username VARCHAR(50) NOT NULL UNIQUE,
-    first_name VARCHAR(100),
-    last_name VARCHAR(100),
-    date_joined DATE DEFAULT SYSDATE
-);
+## 🏗️ Technical Architecture
 
-CREATE TABLE Resources (
-    resource_id NUMBER PRIMARY KEY,
-    resource_name VARCHAR(255) NOT NULL,
-    resource_type VARCHAR(100),  -- e.g., 'Shelter', 'Food Bank', 'Medical'
-    address VARCHAR(255),
-    phone_number VARCHAR(20),
-    allows_pets NUMBER(1) DEFAULT 0, -- 0 for No, 1 for Yes
-    allows_couples NUMBER(1) DEFAULT 0 -- 0 for No, 1 for Yes
-);
+This repository hosts the complete survival architecture, built with:
 
-CREATE TABLE Services (
-    service_id NUMBER PRIMARY KEY,
-    service_name VARCHAR(255) NOT NULL,
-    description VARCHAR(1000),
-    contact_person VARCHAR(100)
-);
+### 1. 🧠 Brick's Brain (Database)
+* **Location:** `/database_schema.sql`
+* **Function:** Stores `UserStates` (Survival vs. Burnout Mode), `EmotionalLogs` for mental health tracking, and modular `WorkbookSteps` for navigating bureaucracy.
+
+### 2. 👂 The Backend Bridge (API)
+* **Location:** `/backend/server.js`
+* **Function:** A Node.js/Express server that listens for user signals.
+    * **Emotional Check-ins:** Detects "Overwhelm" and triggers Burnout Mode.
+    * **Workbook delivery:** Serves custom step-by-step survival guides.
+
+### 3. 📱 The Mobile Experience (Flutter App)
+* **Location:** `/yellow_brick_road_app`
+* **Core Logic:** `/lib/services/brick_service.dart`
+* **Function:** A React Native/Flutter interface that speaks directly to the backend. It includes a "Panic Button" logic that instantly connects users to Brick's API.
 
 ---
 
-## 4. Apprentice Jobs Table
-This table stores the apprentice job opportunities.
+## 🚀 Key Features Implemented
 
-**SQL Code:**
-```sql
-CREATE TABLE ApprenticeJobs (
-    job_id NUMBER PRIMARY KEY,
-    job_title VARCHAR(100) NOT NULL,
-    description VARCHAR(1000),
-    company_name VARCHAR(100),
-    contact_person VARCHAR(100),
-    contact_phone VARCHAR(20)
-);
+* **Trauma-Informed State Machine:** The system detects if a user is in *Survival*, *Burnout*, or *Crisis* mode and adapts the UI accordingly.
+* **Modular Workbooks:** Instead of a static list, users receive dynamic, step-by-step guides for ID Recovery, Housing, and Legal Aid.
+* **Agency Integration:** (In Progress) API endpoints designed to autofill forms and track referrals.
+
+## 🛠️ How to Run
+
+1.  **Backend:** Navigate to `/backend` and run `node server.js` to start Brick's listening engine.
+2.  **Frontend:** Navigate to `/yellow_brick_road_app` and run `flutter run` to launch the mobile interface.
+
+---
+
+*Built with dignity, logic, and lived experience.*
